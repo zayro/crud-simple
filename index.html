@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>inicio</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue_grey-blue.min.css">
+    <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+</head>
+
+<body ng-app="app">
+
+    <style>
+        .centrar {
+            text-align: center;
+            display: -moz-inline-stack;
+            display: inline-block;
+            vertical-align: top;
+        }
+    </style>
+
+    <div class="mdl-grid" ng-controller="controlador">
+
+
+        <div class="mdl-cell mdl-cell--6-col">
+
+
+            <div class=" mdl-card mdl-shadow--2dp">
+                <form ng-submit="guardar(usuario)">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">INSERTAR</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+
+                        <!-- texto -->
+
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" name="nombre" ng-model="usuario.nombre" type="text" id="sample3" required>
+                            <label class="mdl-textfield__label" for="sample3">NOMBRE</label>
+                        </div>
+
+                        <!-- numero -->
+
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"> 
+                            <input class="mdl-textfield__input" name="identificacion" ng-model="usuario.identificacion" type="number" string-to-number pattern="-?[0-9]*(\.[0-9]+)?" id="sample4" required>
+                            <label class="mdl-textfield__label" for="sample4">IDENTIFICACION</label>
+                            <span class="mdl-textfield__error">No es un Numero!</span>
+                        </div>
+
+
+
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <button type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">     ENVIAR    </button>
+                    </div>
+                    <div class="mdl-card__menu">
+                        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">      <i class="material-icons">share</i>    </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+        <!-- formulario actualizar -->
+
+        <div class="mdl-cell mdl-cell--6-col">
+
+
+            <div class=" mdl-card mdl-shadow--2dp">
+                <form ng-submit="actualizar(ActualizarDatos)">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">actualizar</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+
+                        <!-- texto -->
+
+                        <div class="mdl-textfield">
+                            <input class="mdl-textfield__input " name="nombre " ng-model="ActualizarDatos.nombre " type="text " id="sample33 " placeholder="nombre " ng-value="ActualizarDatos.nombre ">
+
+                        </div>
+
+                        <!-- numero -->
+
+                        <div class="mdl-textfield ">
+                            <input class="mdl-textfield__input " name="identificacion " ng-model="ActualizarDatos.identificacion " string-to-number ng-value="ActualizarDatos.identificacion " type="number " placeholder="identificacion " id="sample44 ">
+
+                            <span class="mdl-textfield__error ">No es un Numero!</span>
+                        </div>
+
+
+
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border ">
+                        <button type="submit " class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect ">     ENVIAR   </button>
+                    </div>
+                    <div class="mdl-card__menu ">
+                        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect ">      <i class="material-icons ">share</i>    </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+
+
+        <!-- tabla -->
+
+        <div class="mdl-cell mdl-cell--12-col centrar ">
+
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp ">
+                <thead>
+                    <tr>
+                        <th class="mdl-data-table__cell--non-numeric ">#</th>
+                        <th>NOMBRE</th>
+                        <th>IDENTIFICACION</th>
+                        <th>ELIMINAR</th>
+                        <th>ACTUALIZAR</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="dato in consulta ">
+                        <td class="mdl-data-table__cell--non-numeric ">{{dato.id}}</td>
+                        <td>{{dato.nombre}}</td>
+                        <td>{{dato.identificacion}}</td>
+                        <td><i ng-click="eliminar(dato.id) " class="material-icons ">clear</i></td>
+                        <td><i ng-click="update(dato) " class="material-icons ">update</i></td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js "></script>
+    <script src="app.js "></script>
+
+
+</body>
+
+</html>
